@@ -347,6 +347,7 @@ void set_mode(uint32_t chan, chan_mode m) {
 					pio_set(PIOB, PIO_PB19); // simv
 					pio_clear(PIOB, PIO_PB2);
 					pio_set(PIOB, PIO_PB3);
+                    write_ad5663(0, SWAP16(def_data[i0_dac]));
 					break;
 					}
 				case SVMI: {
@@ -374,6 +375,7 @@ void set_mode(uint32_t chan, chan_mode m) {
 					pio_set(PIOB, PIO_PB20); // simv
 					pio_clear(PIOB, PIO_PB7);
 					pio_set(PIOB, PIO_PB8); // disconnect output
+                    write_ad5663(1, SWAP16(def_data[i0_dac]));
 					break;
 					}
 				case SVMI: {
