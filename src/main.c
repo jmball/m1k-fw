@@ -717,10 +717,36 @@ bool main_setup_handle(void) {
 				db = udd_g_ctrlreq.req.wValue; // default 1;
 				break;
 			}
-            // Reset DAC channels to default values
+            // Reset everything to default value
 			case 0x26: {
+				irq_initialize_vectors();
+				cpu_irq_enable();
+				sysclk_init();
+				get_hwversion();
+				read_flash_table();
+				// convert chip UID to ascii string of hex representation
+				init_build_usb_serial_number();
+				// setup peripherals
+				init_hardware();
+				// enable WDT for "fairly short"
+				wdt_init(WDT, WDT_MR_WDRSTEN, 50, 50);
+
+				// start USB
+				cpu_delay_us(100, F_CPU);
+
+				udc_detach();
+				udc_stop();
+				udc_start();
+				cpu_delay_us(10, F_CPU);
+				udc_attach();
 				write_ad5663(0, SWAP16(def_data[i0_dac]));
-                write_ad5663(1, SWAP16(def_data[i0_dac]));
+				write_ad5663(1, SWAP16(def_data[i0_dac]));
+				// set pots for a sensible default
+				cpu_delay_us(100, F_CPU);
+				write_ad5122(0, def_data[p1_simv], def_data[p2_simv]);
+				cpu_delay_us(100, F_CPU);
+				write_ad5122(1, def_data[p1_simv], def_data[p2_simv]);
+				cpu_delay_us(100, F_CPU);
 				break;
 			}
 			/// Set pin 0
