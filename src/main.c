@@ -650,7 +650,7 @@ bool main_setup_handle(void) {
 					pio_set_output(PIOB, PIO_PB15, (state & 0x4) ? LOW : HIGH, DISABLE, DISABLE);	// LED_RED
 					pio_set_output(PIOA, PIO_PA29, (state & 0x2) ? LOW : HIGH, DISABLE, DISABLE);	// LED_GREEN
 					pio_set_output(PIOA, PIO_PA28, (state & 0x1) ? LOW : HIGH, DISABLE, DISABLE);	// LED_BLUE
-				} else {
+				} else { 
 					pio_set_output(PIOA, PIO_PA1, (state & 0x4) ? LOW : HIGH, DISABLE, DISABLE);	// LED_RED_DS3
 					pio_set_output(PIOA, PIO_PA2, (state & 0x2) ? LOW : HIGH, DISABLE, DISABLE);	// LED_RED_DS2
 					pio_set_output(PIOA, PIO_PA0, (state & 0x1) ? LOW : HIGH, DISABLE, DISABLE);	// LED_RED_DS1
@@ -715,6 +715,12 @@ bool main_setup_handle(void) {
 			// Set DAC b configure register variable
 			case 0x25: {
 				db = udd_g_ctrlreq.req.wValue; // default 1;
+				break;
+			}
+            // Reset DAC channels to default values
+			case 0x26: {
+				write_ad5663(0, SWAP16(def_data[i0_dac]));
+                write_ad5663(1, SWAP16(def_data[i0_dac]));
 				break;
 			}
 			/// Set pin 0
