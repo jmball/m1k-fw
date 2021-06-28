@@ -740,6 +740,11 @@ bool main_setup_handle(void) {
 				cpu_delay_us(100, F_CPU);
 				break;
 			}
+			// Set DAC output value
+			case 0x27: {
+				write_ad5663(udd_g_ctrlreq.req.wIndex, SWAP16(udd_g_ctrlreq.req.wValue));
+				break;
+			}
 			/// Set pin 0
 			case 0x50: {
 				int32_t low = udd_g_ctrlreq.req.wValue & 0x1F;
