@@ -745,6 +745,21 @@ bool main_setup_handle(void) {
 				write_ad5663(udd_g_ctrlreq.req.wIndex, SWAP16(udd_g_ctrlreq.req.wValue));
 				break;
 			}
+            // Get raw ADC value
+			case 0x28: {
+				uint8_t cfg[2] = {0xF1, 0x20};
+				uint8_t dummy[2];
+				size = 2;
+				get_sample_ad7682(udd_g_ctrlreq.req.wValue & 0x1, cfg, ret_data);
+				get_sample_ad7682(udd_g_ctrlreq.req.wValue & 0x1, cfg, ret_data);
+				if ((udd_g_ctrlreq.req.wValue & 0x1) == A)
+					cfg[0] = 0xF1;
+				else
+					cfg[0] = 0xF7;
+				get_sample_ad7682(udd_g_ctrlreq.req.wValue & 0x1, cfg, dummy);
+				ptr = (uint8_t*)&ret_data;
+				break;
+			}
 			/// Set pin 0
 			case 0x50: {
 				int32_t low = udd_g_ctrlreq.req.wValue & 0x1F;
