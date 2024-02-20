@@ -1,0 +1,3 @@
+asf/sam/drivers/pmc/sleep.c:279:6:pmc_sleep	48	static
+asf/sam/drivers/pmc/sleep.c:370:6:pmc_is_wakeup_clocks_restored	0	static
+asf/sam/drivers/pmc/sleep.c:375:6:pmc_wait_wakeup_clocks_restore	0	static

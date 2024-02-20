@@ -1,0 +1,6 @@
+asf/sam/drivers/pio/pio_handler.c:86:6:pio_handler_process	24	static
+asf/sam/drivers/pio/pio_handler.c:139:10:pio_handler_set	16	static
+asf/sam/drivers/pio/pio_handler.c:189:10:pio_handler_set_pin	24	static
+asf/sam/drivers/pio/pio_handler.c:203:6:PIOA_Handler	0	static
+asf/sam/drivers/pio/pio_handler.c:214:6:PIOB_Handler	0	static
+asf/sam/drivers/pio/pio_handler.c:271:6:pio_handler_set_priority	24	static

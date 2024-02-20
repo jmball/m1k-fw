@@ -1,0 +1,5 @@
+asf/common/services/clock/sam3u/sysclk.c:76:6:sysclk_set_prescalers	8	static
+asf/common/services/clock/sam3u/sysclk.c:88:6:sysclk_set_source	8	static
+asf/common/services/clock/sam3u/sysclk.c:127:6:sysclk_enable_usb	8	static
+asf/common/services/clock/sam3u/sysclk.c:143:6:sysclk_disable_usb	0	static
+asf/common/services/clock/sam3u/sysclk.c:150:6:sysclk_init	8	static

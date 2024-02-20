@@ -1,0 +1,6 @@
+asf/common/services/usb/class/vendor/device/udi_vendor.c:121:6:udi_vendor_setup	0	static
+asf/common/services/usb/class/vendor/device/udi_vendor.c:139:9:udi_vendor_getsetting	0	static
+asf/common/services/usb/class/vendor/device/udi_vendor.c:113:6:udi_vendor_disable	0	static
+asf/common/services/usb/class/vendor/device/udi_vendor.c:99:6:udi_vendor_enable	8	static
+asf/common/services/usb/class/vendor/device/udi_vendor.c:208:6:udi_vendor_bulk_in_run	16	static
+asf/common/services/usb/class/vendor/device/udi_vendor.c:232:6:udi_vendor_bulk_out_run	16	static

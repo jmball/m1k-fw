@@ -1,0 +1,10 @@
+asf/common/services/usb/udc/udc.c:577:13:udc_valid_address	0	static
+asf/common/services/usb/udc/udc.c:221:13:udc_update_iface_desc.part.0	8	static
+asf/common/services/usb/udc/udc.c:266:13:udc_iface_disable	24	static
+asf/common/services/usb/udc/udc.c:318:13:udc_iface_enable	16	static
+asf/common/services/usb/udc/udc.c:157:36:udc_get_interface_desc	0	static
+asf/common/services/usb/udc/udc.c:353:6:udc_start	0	static
+asf/common/services/usb/udc/udc.c:360:6:udc_stop	16	static
+asf/common/services/usb/udc/udc.c:370:6:udc_reset	16	static
+asf/common/services/usb/udc/udc.c:397:6:udc_sof_notify	16	static
+asf/common/services/usb/udc/udc.c:1095:6:udc_process_setup	32	static

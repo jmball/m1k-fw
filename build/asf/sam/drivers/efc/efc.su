@@ -1,0 +1,13 @@
+asf/sam/drivers/efc/efc.c:193:10:efc_get_flash_access_mode	0	static
+asf/sam/drivers/efc/efc.c:218:10:efc_get_wait_state	0	static
+asf/sam/drivers/efc/efc.c:259:10:efc_get_status	0	static
+asf/sam/drivers/efc/efc.c:271:10:efc_get_result	0	static
+asf/sam/drivers/efc/efc.c:290:10:efc_perform_read_sequence	16	static
+asf/sam/drivers/efc/efc.c:364:6:efc_write_fmr	0	static
+asf/sam/drivers/efc/efc.c:113:10:efc_init	8	static
+asf/sam/drivers/efc/efc.c:154:6:efc_enable_frdy_interrupt	0	static
+asf/sam/drivers/efc/efc.c:166:6:efc_disable_frdy_interrupt	0	static
+asf/sam/drivers/efc/efc.c:179:6:efc_set_flash_access_mode	0	static
+asf/sam/drivers/efc/efc.c:204:6:efc_set_wait_state	0	static
+asf/sam/drivers/efc/efc.c:379:10:efc_perform_fcr	8	static
+asf/sam/drivers/efc/efc.c:236:10:efc_perform_command	0	static

@@ -1,0 +1,3 @@
+asf/sam/utils/cmsis/sam3u/source/templates/system_sam3u.c:76:6:SystemInit	0	static
+asf/sam/utils/cmsis/sam3u/source/templates/system_sam3u.c:119:6:SystemCoreClockUpdate	0	static
+asf/sam/utils/cmsis/sam3u/source/templates/system_sam3u.c:192:6:system_init_flash	0	static

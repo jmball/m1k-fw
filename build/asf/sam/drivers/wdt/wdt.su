@@ -1,0 +1,6 @@
+asf/sam/drivers/wdt/wdt.c:85:10:wdt_get_timeout_value	0	static
+asf/sam/drivers/wdt/wdt.c:107:6:wdt_init	4	static
+asf/sam/drivers/wdt/wdt.c:117:6:wdt_disable	0	static
+asf/sam/drivers/wdt/wdt.c:126:6:wdt_restart	0	static
+asf/sam/drivers/wdt/wdt.c:143:10:wdt_get_status	0	static
+asf/sam/drivers/wdt/wdt.c:156:10:wdt_get_us_timeout_period	0	static
