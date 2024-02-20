@@ -15,7 +15,7 @@ uint8_t not_a_new_transfer;
 #define CUSTOM_SERIAL_OFFSET			224
 
 // default values for DAC, pots
-uint16_t def_data[5] = {0, 0, 0, 0x30, 0x40};
+uint16_t def_data[5] = {26600, 0, 0, 0x30, 0x40};
 
 // reversed endianness from AD7682 datasheet
 uint16_t v1_adc_conf = 0x20F1;
@@ -347,7 +347,7 @@ void set_mode(uint32_t chan, chan_mode m) {
 					pio_set(PIOB, PIO_PB19); // simv
 					pio_clear(PIOB, PIO_PB2);
 					pio_set(PIOB, PIO_PB3);
-                    write_ad5663(0, SWAP16(def_data[i0_dac]));
+					write_ad5663(0, SWAP16(def_data[i0_dac]));
 					break;
 					}
 				case SVMI: {
@@ -375,7 +375,7 @@ void set_mode(uint32_t chan, chan_mode m) {
 					pio_set(PIOB, PIO_PB20); // simv
 					pio_clear(PIOB, PIO_PB7);
 					pio_set(PIOB, PIO_PB8); // disconnect output
-                    write_ad5663(1, SWAP16(def_data[i0_dac]));
+					write_ad5663(1, SWAP16(def_data[i0_dac]));
 					break;
 					}
 				case SVMI: {
@@ -650,7 +650,7 @@ bool main_setup_handle(void) {
 					pio_set_output(PIOB, PIO_PB15, (state & 0x4) ? LOW : HIGH, DISABLE, DISABLE);	// LED_RED
 					pio_set_output(PIOA, PIO_PA29, (state & 0x2) ? LOW : HIGH, DISABLE, DISABLE);	// LED_GREEN
 					pio_set_output(PIOA, PIO_PA28, (state & 0x1) ? LOW : HIGH, DISABLE, DISABLE);	// LED_BLUE
-				} else { 
+				} else {
 					pio_set_output(PIOA, PIO_PA1, (state & 0x4) ? LOW : HIGH, DISABLE, DISABLE);	// LED_RED_DS3
 					pio_set_output(PIOA, PIO_PA2, (state & 0x2) ? LOW : HIGH, DISABLE, DISABLE);	// LED_RED_DS2
 					pio_set_output(PIOA, PIO_PA0, (state & 0x1) ? LOW : HIGH, DISABLE, DISABLE);	// LED_RED_DS1
@@ -715,49 +715,6 @@ bool main_setup_handle(void) {
 			// Set DAC b configure register variable
 			case 0x25: {
 				db = udd_g_ctrlreq.req.wValue; // default 1;
-				break;
-			}
-            // Reset everything to default value
-			case 0x26: {
-				// setup peripherals
-				init_hardware();
-
-				// start USB
-				cpu_delay_us(100, F_CPU);
-
-				udc_detach();
-				udc_stop();
-				udc_start();
-				cpu_delay_us(10, F_CPU);
-				udc_attach();
-				write_ad5663(0, SWAP16(def_data[i0_dac]));
-				write_ad5663(1, SWAP16(def_data[i0_dac]));
-				// set pots for a sensible default
-				cpu_delay_us(100, F_CPU);
-				write_ad5122(0, def_data[p1_simv], def_data[p2_simv]);
-				cpu_delay_us(100, F_CPU);
-				write_ad5122(1, def_data[p1_simv], def_data[p2_simv]);
-				cpu_delay_us(100, F_CPU);
-				break;
-			}
-			// Set DAC output value
-			case 0x27: {
-				write_ad5663(udd_g_ctrlreq.req.wIndex, SWAP16(udd_g_ctrlreq.req.wValue));
-				break;
-			}
-            // Get raw ADC value
-			case 0x28: {
-				uint8_t cfg[2] = {0xF1, 0x20};
-				uint8_t dummy[2];
-				size = 2;
-				get_sample_ad7682(udd_g_ctrlreq.req.wValue & 0x1, cfg, ret_data);
-				get_sample_ad7682(udd_g_ctrlreq.req.wValue & 0x1, cfg, ret_data);
-				if ((udd_g_ctrlreq.req.wValue & 0x1) == A)
-					cfg[0] = 0xF1;
-				else
-					cfg[0] = 0xF7;
-				get_sample_ad7682(udd_g_ctrlreq.req.wValue & 0x1, cfg, dummy);
-				ptr = (uint8_t*)&ret_data;
 				break;
 			}
 			/// Set pin 0
